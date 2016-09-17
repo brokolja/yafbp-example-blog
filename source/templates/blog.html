@@ -1,0 +1,58 @@
+---
+type: page
+title: Blog
+---
+
+{% extends "layouts/basic.html" %}
+
+{% block meta %}
+<meta name="description" content="This is blog.">
+{% endblock %}
+
+{% block body %}
+
+<a href="{{pages.index.path}}" title="{{pages.index.title}}">Back to Home</a><br><br>
+
+<h1>Posts per category</h1>
+
+<ul>
+{% for key, value in global.pagesPerDataKeyValue(pages, "category") %}
+    <li>
+        {{ key }} ({{ value | length }})
+        <ul>
+            {% for item in value | sort(false, false, "published") %}
+            <li>
+                <a href="/{{ item.path }}">{{ item.title }} ({{ global.moment(item.published).format('Do MMMM YYYY') }})</a>
+            </li>
+            {% else %}
+            <li>No Posts</li>
+            {% endfor %}
+        </ul>
+    </li>
+{% else %}
+    <li>No categories</li>
+{% endfor %}
+</ul>
+
+<h1>Posts per tag</h1>
+
+<ul>
+{% for key, value in global.pagesPerDataKeyValue(pages, "tags") %}
+    <li>
+        {{ key }} ({{ value | length }})
+        <ul>
+            {% for item in value | sort(false, false, "published") %}
+            <li>
+                <a href="/{{ item.path }}">{{ item.title }} ({{ global.moment(item.published).format('Do MMMM YYYY') }})</a>
+            </li>
+            {% else %}
+            <li>No Pages</li>
+            {% endfor %}
+        </ul>
+    </li>
+{% else %}
+    <li>No tags</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

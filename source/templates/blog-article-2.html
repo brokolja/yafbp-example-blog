@@ -1,0 +1,21 @@
+---
+type: blog
+title: Blog - Article 2
+published : "2016-09-16"
+category : Categorie 2
+tags: ["Tag 2", "Tag 3"]
+---
+
+{% extends "layouts/basic.html" %}
+
+{% block meta %}
+<meta name="description" content="This is blog article 2.">
+{% endblock %}
+
+{% block body %}
+
+{% include "includes/blogArticleHead.html" %}
+<p>Text of blog Article...</p>
+{% include "includes/blogArticleFooter.html" %}
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% for key, value in global.pagesPerDataKeyValue(pages, "category", page.category) %}
+    {% if (value | length) > 1 %}
+    <h4>Other posts in this category ({{ (value | length) - 1 }})</h4>
+    <ul>
+        {% for item in value | sort(false, false, "published") %}
+            {% if item.path !== page.path %}
+                <li>
+                    <a href="/{{ item.path }}">{{ item.title }} ({{ global.moment(item.published).format('Do MMMM YYYY') }})</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endfor %}

@@ -1,0 +1,29 @@
+---
+type: page
+title: Home
+---
+
+{% extends "layouts/basic.html" %}
+
+{% block meta %}
+<meta name="description" content="This is home.">
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="styles/home.css">
+{% endblock %}
+
+{% block body %}
+
+<h1>Welcome to: {{ global.siteUrl }}</h1>
+
+<a href="{{pages.blog.path}}" title="{{pages.blog.title}}">Check our Blog</a><br><br>
+
+<img data-inject="svg" src="/images/coffee.svg" class="coffee" alt="I need coffee">
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="scripts/home.js"></script>
+{% endblock %}
+
